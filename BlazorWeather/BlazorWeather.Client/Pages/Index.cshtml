@@ -1,0 +1,15 @@
+﻿@using BlazorWeather.Client.State
+
+@inject AppState state
+
+<Search OnSearchCompleted=((Action)Refresh) />
+
+<ForecastList Weather="@state.Weather" />
+
+@functions {
+
+    void Refresh()
+    {
+        StateHasChanged();
+    }
+}

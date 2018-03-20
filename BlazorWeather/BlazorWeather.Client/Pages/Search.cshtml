@@ -1,0 +1,27 @@
+﻿@using BlazorWeather.Shared
+@using BlazorWeather.Client.State
+
+@inject HttpClient httpClient
+@inject AppState state
+
+<div class="hero" data-bg-image="images/banner.png">
+    <div class="container">
+        <form action="#" class="find-location">
+            <input @bind(location) type="text" placeholder="Find your location...">
+            <input @onclick(SearchLocation) type="submit" value="Find">
+        </form>
+    </div>
+</div>
+
+@functions {
+    public string location;
+
+    async void SearchLocation()
+    {
+        var weatherInfo = await httpClient.GetJsonAsync<WeatherDTO>($"api/weather?location={location}");
+        state.AddWeather(weatherInfo);
+        OnSearchCompleted?.Invoke();
+    }
+
+    public Action OnSearchCompleted { get; set; }
+}
