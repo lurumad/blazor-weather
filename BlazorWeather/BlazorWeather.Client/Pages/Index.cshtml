@@ -2,7 +2,7 @@
 
 @inject AppState state
 
-<Search OnSearchCompleted=((Action)Refresh) />
+<Search OnSearchCompleted=@Refresh />
 
 <ForecastList Weather="@state.Weather" />
 

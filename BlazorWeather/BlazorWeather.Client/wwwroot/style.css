@@ -1206,9 +1206,11 @@ form textarea {
         color: #009ad8; }
 
 .hero {
-  background-size: cover;
-  padding: 70px 0;
-  min-height: 350px; }
+    background-image: url("images/banner.png");
+    background-size: cover;
+    padding: 70px 0;
+    min-height: 350px;
+}
 
 .find-location {
   position: relative;
